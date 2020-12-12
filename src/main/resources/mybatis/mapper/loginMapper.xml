@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.token_test.mapper.LoginMapper">
+    <select id="getPasswordByUserName" resultType="java.lang.String">
+        select user_name
+        from
+            <if test="role == 1">
+                admins
+            </if>
+            <if test="role == 2">
+                users
+            </if>
+            <if test="role == 3">
+                enterprise
+            </if>
+            where user_name=#{userName} and password=#{password}
+    </select>
+
+
+</mapper>
